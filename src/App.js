@@ -1,6 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from './components/Home/Home';
+import Fridge from './components/Fridge/Fridge';
+import Recipe from './components/Recipe/Recipe';
+import User from './components/User/User';
 
 function App() {
   return (
