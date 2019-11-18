@@ -27,12 +27,12 @@ render() {
          
               <Link to="/recipes" className="nav-link">Recipes</Link>
 
-              <Link to="/sign-in" className="nav-link">Sign In</Link>
+              <Link to="/sign_in" className="nav-link">Sign In</Link>
      
-    <Route path="/" exact component={Home} />
+    <Route path="/home" exact component={Home} />
     <Route path="/fridge" component={Fridge} />
     <Route path="/recipes" component={Recipes} /> 
-    <Route path="/user" component={User} />
+    <Route path="/sign_in" component={User} />
     </div> 
     </Router>
   
