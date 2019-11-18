@@ -1,6 +1,6 @@
 import './App.css';
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home/Home';
 import Fridge from './components/Fridge/Fridge';
@@ -29,10 +29,10 @@ render() {
 
               <Link to="/sign-in" className="nav-link">Sign In</Link>
      
-    {/* <Route path="/" exact component={Home} />
+    <Route path="/" exact component={Home} />
     <Route path="/fridge" component={Fridge} />
     <Route path="/recipes" component={Recipes} /> 
-    <Route path="/user" component={User} /> */}
+    <Route path="/user" component={User} />
     </div> 
     </Router>
   
