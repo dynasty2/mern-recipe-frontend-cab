@@ -21,13 +21,20 @@ render() {
     <Router>
     <div className="container">
    
-              <Link to="/home" className="nav-link">Home</Link>
-           
-              <Link to="/fridge" className="nav-link">Your Fridge</Link>
-         
-              <Link to="/recipes" className="nav-link">Recipes</Link>
-
-              <Link to="/sign_in" className="nav-link">Sign In</Link>
+    <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <Link to="/home" class="nav-link active" href="#">Home</Link>
+  </li>
+  <li class="nav-item">
+    <Link to="/fridge" class="nav-link" href="#">Your Fridge</Link>
+  </li>
+  <li class="nav-item">
+    <Link to="/recipes" class="nav-link" href="#">Recipes</Link>
+  </li>
+  <li class="nav-item">
+    <Link to="/sign_in" class="nav-link" href="#">Sign In</Link>
+  </li>
+</ul>
      
     <Route path="/home" exact component={Home} />
     <Route path="/fridge" component={Fridge} />
@@ -41,3 +48,17 @@ render() {
   }
 export default App;
 
+{/* <ul class="nav justify-content-center">
+  <li class="nav-item">
+    <Link to="/home" class="nav-link active" href="#">Home</Link>
+  </li>
+  <li class="nav-item">
+    <Link to="/fridge" class="nav-link" href="#">Your Fridge</Link>
+  </li>
+  <li class="nav-item">
+    <Link to="/recipes" class="nav-link" href="#">Recipes</Link>
+  </li>
+  <li class="nav-item">
+    <Link to="/sign_in" class="nav-link" href="#">Sign In</Link>
+  </li>
+</ul> */}

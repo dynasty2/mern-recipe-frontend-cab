@@ -7,9 +7,9 @@ export default class Fridge extends Component {
 
 render() {
         return (
-            <div>
+            <header className="container-fluid p-3 mb-2 bg-light text-dark">
                 <h1>What's in your Fridge?</h1>
-            </div>
+            </header>
         )
     }
 }
