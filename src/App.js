@@ -19,20 +19,20 @@ class App extends Component {
 render() {
   return (
     <Router>
-    <div className="container">
+    <div className="container" style={{ marginTop: 20}}>
    
-    <ul class="nav justify-content-center">
-  <li class="nav-item">
-    <Link to="/home" class="nav-link active" href="#">Home</Link>
+    <ul className="nav justify-content-center">
+  <li className="nav-item">
+    <Link to="/home" className="nav-link active" href="#">Home</Link>
   </li>
-  <li class="nav-item">
-    <Link to="/fridge" class="nav-link" href="#">Your Fridge</Link>
+  <li className="nav-item">
+    <Link to="/fridge" className="nav-link" href="#">Your Fridge</Link>
   </li>
-  <li class="nav-item">
-    <Link to="/recipes" class="nav-link" href="#">Recipes</Link>
+  <li className="nav-item">
+    <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
   </li>
-  <li class="nav-item">
-    <Link to="/sign_in" class="nav-link" href="#">Sign In</Link>
+  <li className="nav-item">
+    <Link to="/sign_in" className="nav-link" href="#">Sign In</Link>
   </li>
 </ul>
      
@@ -48,17 +48,17 @@ render() {
   }
 export default App;
 
-{/* <ul class="nav justify-content-center">
-  <li class="nav-item">
-    <Link to="/home" class="nav-link active" href="#">Home</Link>
+{/* <ul className="nav justify-content-center">
+  <li className="nav-item">
+    <Link to="/home" className="nav-link active" href="#">Home</Link>
   </li>
-  <li class="nav-item">
-    <Link to="/fridge" class="nav-link" href="#">Your Fridge</Link>
+  <li className="nav-item">
+    <Link to="/fridge" className="nav-link" href="#">Your Fridge</Link>
   </li>
-  <li class="nav-item">
-    <Link to="/recipes" class="nav-link" href="#">Recipes</Link>
+  <li className="nav-item">
+    <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
   </li>
-  <li class="nav-item">
-    <Link to="/sign_in" class="nav-link" href="#">Sign In</Link>
+  <li className="nav-item">
+    <Link to="/sign_in" className="nav-link" href="#">Sign In</Link>
   </li>
 </ul> */}
