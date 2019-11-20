@@ -6,8 +6,6 @@ import Home from './components/Home/Home';
 import Fridge from './components/Fridge/Fridge';
 import Recipes from './components/Recipe/Recipes';
 import User from './components/User/User';
-import FormFridge from './components/FormFridge/FormFridge';
-import FridgeFood from './components/FridgeFood/FridgeFood';
 
 class App extends Component {
   // constructor(props){
@@ -39,7 +37,10 @@ render() {
 </ul>
      
     <Route path="/home" exact component={Home} />
-    <Route path="/fridge" component={Fridge} />
+    <Route path="/fridge" render={() => {
+      return <Fridge />
+    }
+      } />
     <Route path="/recipes" component={Recipes} /> 
     <Route path="/sign_in" component={User} />
     </div> 

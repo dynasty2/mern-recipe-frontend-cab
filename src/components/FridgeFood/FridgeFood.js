@@ -3,21 +3,28 @@ import React, { Component } from 'react';
 class FridgeFood extends Component {
     
     render() {
+        const items = this.props.items;
+        let itemArray = [];
+        if(items) {
+            itemArray = items.map((item, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{item}</td>
+                  </tr>
+                );
+              })
+        }
+        
         return (
-            <table class="table table">
+            <table className="table table">
                 <thead>
                     <tr>
-                        <th scope="col">First</th>
+                        <th scope="col">Food Item</th>
                         <th scope="col">Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Apple</td>
-                        <td>
-                            <button type="submit" class="btn-sm btn-danger">Remove</button>
-                        </td>
-                    </tr>
+                {itemArray}
                 </tbody>
             </table>
         )
@@ -25,3 +32,7 @@ class FridgeFood extends Component {
 }
 
 export default FridgeFood;
+
+{/* <td>
+<button type="submit" class="btn-sm btn-danger">Remove</button>
+</td> */}

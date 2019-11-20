@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './Home.css';
 import { Link } from 'react-router-dom';
 // import axios from 'axios';
 
@@ -8,7 +9,7 @@ export default class Home extends Component {
 render() {
     return (
         <body>
-        <header style={{ marginTop: -20 }}>
+        <header className="sticky-top" style={{ marginTop: -20 }}>
             <div className="mask rgba-black-light align-items-center">
               <div className="container">
                 <div className="row">

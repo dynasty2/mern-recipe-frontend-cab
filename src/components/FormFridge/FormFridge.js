@@ -9,12 +9,18 @@ class FormFridge extends Component {
         return (
             // <Search array=[2, 3,4]/>
             <div>
-                <form style={{ margin: 20 }}>
-                    <div class="form-group">
-                        <label for="food">Food Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Food Name"/>
+                <form onSubmit={this.props.handleFormSubmit} style={{ margin: 20 }}>
+                    <div className="form-group">
+                        <label htmlFor="food">Food Name</label>
+                        <input 
+                               type="text" 
+                               className="form-control" 
+                               id="food" 
+                               aria-describedby="foodHelp" 
+                               placeholder="Enter Food Name"
+                               onChange={this.props.handleInputChange}/>
                     </div> 
-                        <button type="submit" class="btn btn-primary">Add to Fridge</button>
+                        <button type="submit" value="Submit" className="btn btn-primary">Add to Fridge</button>
                 </form>
             </div>
                 )
