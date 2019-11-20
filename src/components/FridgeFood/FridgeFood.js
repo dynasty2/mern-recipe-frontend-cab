@@ -11,7 +11,7 @@ class FridgeFood extends Component {
                   <tr key={index}>
                     <td>{item}</td>
                     <td>
-                    <button type="button" className="btn-sml btn-outline-danger">Remove</button>
+                    <button onClick={this.deleteFood} className="btn-sml btn-outline-danger">Remove</button>
                     </td>
                   </tr>
                 );
@@ -26,7 +26,8 @@ class FridgeFood extends Component {
                         <th scope="col">Edit</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody onSubmit={this.props.handleFormSubmit} 
+                       onClick={this.props.deleteFood}>
                 {itemArray}
                 </tbody>
             </table>
@@ -35,7 +36,3 @@ class FridgeFood extends Component {
 }
 
 export default FridgeFood;
-
-{/* <td>
-<button type="submit" class="btn-sm btn-danger">Remove</button>
-</td> */}

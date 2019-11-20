@@ -4,10 +4,7 @@ class FormFridge extends Component {
 
     render() {
 
-
-
         return (
-            // <Search array=[2, 3,4]/>
             <div>
                 <form onSubmit={this.props.handleFormSubmit} style={{ margin: 20 }}>
                     <div className="form-group">
@@ -25,7 +22,6 @@ class FormFridge extends Component {
             </div>
                 )
             }
-
 }
 
 export default FormFridge;
