@@ -7,7 +7,7 @@ import Fridge from './components/Fridge/Fridge';
 import Recipes from './components/Recipe/Recipes';
 import User from './components/User/User';
 import FormFridge from './components/FormFridge/FormFridge';
-import PossibleRecipes from './components/PossibleRecipes/PossibleRecipes';
+import FridgeFood from './components/FridgeFood/FridgeFood';
 
 class App extends Component {
   // constructor(props){
