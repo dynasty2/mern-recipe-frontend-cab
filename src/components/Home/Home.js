@@ -8,7 +8,7 @@ export default class Home extends Component {
 
 render() {
     return (
-        <body>
+        <body className="container">
         <header className="sticky-top" style={{ marginTop: -20 }}>
             <div className="mask rgba-black-light align-items-center">
               <div className="container">

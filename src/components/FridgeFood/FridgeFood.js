@@ -10,6 +10,9 @@ class FridgeFood extends Component {
                 return (
                   <tr key={index}>
                     <td>{item}</td>
+                    <td>
+                    <button type="button" className="btn-sml btn-outline-danger">Remove</button>
+                    </td>
                   </tr>
                 );
               })
