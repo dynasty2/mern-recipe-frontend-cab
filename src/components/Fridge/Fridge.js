@@ -13,7 +13,8 @@ constructor() {
 
     this.state = {
         food: "",
-        item: []
+        item: [],
+        ingrName: ["apple", "salt"]
     }
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -29,7 +30,8 @@ constructor() {
       items.push(this.state.food);
 
     this.setState({
-        item: items
+        item: items,
+        food: ""
     })
   }
 

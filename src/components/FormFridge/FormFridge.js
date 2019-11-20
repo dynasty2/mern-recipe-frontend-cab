@@ -15,6 +15,7 @@ class FormFridge extends Component {
                                id="food" 
                                aria-describedby="foodHelp" 
                                placeholder="Enter Food Name"
+                               value={this.props.food}
                                onChange={this.props.handleInputChange}/>
                     </div> 
                         <button type="submit" value="Submit" className="btn btn-primary">Add to Fridge</button>
