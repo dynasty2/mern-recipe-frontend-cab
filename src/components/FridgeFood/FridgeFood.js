@@ -8,10 +8,11 @@ class FridgeFood extends Component {
         if(items) {
             itemArray = items.map((item, index) => {
                 return (
-                  <tr key={index}>
+                  <tr key={index} data-key={index}>
                     <td>{item}</td>
                     <td>
-                    <button onClick={this.deleteFood} className="btn-sml btn-outline-danger">Remove</button>
+                    <button onClick={this.deleteFood}  
+                            className="btn-sml btn-outline-danger">Remove</button>
                     </td>
                   </tr>
                 );

@@ -37,7 +37,25 @@ deleteFood = (e) => {
     e.preventDefault();
 
     let items = this.state.item.slice(0);
-    items.pop(this.state.food);
+    let index = e.target.parentNode.parentNode.dataset.key;
+    items[index] = items[items.length - 1];
+    items.pop();
+    let temp = items[index];
+    let past = false;
+    items.forEach((item, i) => {
+        if(parseInt(index, 10) === i){
+            past = true;
+            items[i] = items[i + 1];
+           
+        } else if(past && i !== (items.length - 1)) {
+            items[i] = items[i + 1];
+        } else if (i === items.length - 1) {
+            items[i] = temp;
+        } else {
+            items[i] = item;
+        }
+    })
+    
 
     this.setState({
         item: items
