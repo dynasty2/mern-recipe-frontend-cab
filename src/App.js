@@ -56,18 +56,3 @@ render() {
 };
   }
 export default App;
-
-{/* <ul className="nav justify-content-center">
-  <li className="nav-item">
-    <Link to="/home" className="nav-link active" href="#">Home</Link>
-  </li>
-  <li className="nav-item">
-    <Link to="/fridge" className="nav-link" href="#">Your Fridge</Link>
-  </li>
-  <li className="nav-item">
-    <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
-  </li>
-  <li className="nav-item">
-    <Link to="/sign_in" className="nav-link" href="#">Sign In</Link>
-  </li>
-</ul> */}
