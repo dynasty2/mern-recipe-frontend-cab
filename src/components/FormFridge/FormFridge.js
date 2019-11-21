@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import './FormFridge.css';
 
 class FormFridge extends Component {
 
     render() {
 
         return (
-            <div>
+            <div className="fridgeInput">
                 <form onSubmit={this.props.handleFormSubmit} style={{ margin: 20 }}>
                     <div className="form-group">
                         <label htmlFor="food">Food Name</label>

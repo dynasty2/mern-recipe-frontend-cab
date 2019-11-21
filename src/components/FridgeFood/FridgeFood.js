@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './FridgeFood.css';
 
 class FridgeFood extends Component {
     
@@ -20,7 +21,7 @@ class FridgeFood extends Component {
         }
         
         return (
-            <table className="table table">
+            <table className="fridge table table">
                 <thead>
                     <tr>
                         <th scope="col">Food Item</th>

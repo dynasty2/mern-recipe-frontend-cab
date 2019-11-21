@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Fridge from './components/Fridge/Fridge';
 import Recipes from './components/Recipe/Recipes';
 import User from './components/User/User';
+import FridgeRecipeRender from './components/FridgeRecipeRender/FridgeRecipeRender';
 
 class App extends Component {
   // constructor(props){

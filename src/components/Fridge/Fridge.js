@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import FormFridge from '../../components/FormFridge/FormFridge';
 import FridgeFood from '../../components/FridgeFood/FridgeFood';
+import FridgeRecipeRender from '../../components/FridgeRecipeRender/FridgeRecipeRender';
 
 class Fridge extends Component { 
 //constructor: state set as an array: wordArray = ["apple", "banana"] and bind handleFormSubmit
@@ -75,11 +76,16 @@ render() {
 
     return (
         <div>
+            <div className="float-left">
             <FormFridge handleFormSubmit={ this.handleFormSubmit } 
                         handleInputChange={ this.handleInputChange }
                         food={ this.state.food } />
             <FridgeFood items={ this.state.item } 
                         deleteFood={this.deleteFood}/>
+            </div>
+            <div className="float-right" style={{ marginTop: 160 }}>
+            <FridgeRecipeRender />
+            </div>
         </div>
             )
         }
