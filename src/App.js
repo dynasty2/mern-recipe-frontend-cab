@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Fridge from './components/Fridge/Fridge';
 import Recipes from './components/Recipe/Recipes';
 import User from './components/User/User';
+import FridgeRecipeRender from './components/FridgeRecipeRender/FridgeRecipeRender';
 
 class App extends Component {
   // constructor(props){
@@ -13,24 +14,39 @@ class App extends Component {
 
   //   this.state = { 
 
+
   //   };
   // }
+
+
+
+
 
 render() {
   return (
     <Router>
-    <div className="container">
+    <div className="container" style={{ marginTop: 20}}>
    
-              <Link to="/home" className="nav-link">Home</Link>
-           
-              <Link to="/fridge" className="nav-link">Your Fridge</Link>
-         
-              <Link to="/recipes" className="nav-link">Recipes</Link>
-
-              <Link to="/sign_in" className="nav-link">Sign In</Link>
+    <ul className="nav justify-content-center">
+  <li className="nav-item">
+    <Link to="/home" className="nav-link active" href="#">Home</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/fridge" className="nav-link" href="#">Your Fridge</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/sign_in" className="nav-link" href="#">Sign In</Link>
+  </li>
+</ul>
      
     <Route path="/home" exact component={Home} />
-    <Route path="/fridge" component={Fridge} />
+    <Route path="/fridge" render={() => {
+      return <Fridge />
+    }
+      } />
     <Route path="/recipes" component={Recipes} /> 
     <Route path="/sign_in" component={User} />
     </div> 
@@ -41,3 +57,17 @@ render() {
   }
 export default App;
 
+{/* <ul className="nav justify-content-center">
+  <li className="nav-item">
+    <Link to="/home" className="nav-link active" href="#">Home</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/fridge" className="nav-link" href="#">Your Fridge</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/sign_in" className="nav-link" href="#">Sign In</Link>
+  </li>
+</ul> */}
