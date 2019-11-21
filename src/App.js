@@ -36,7 +36,7 @@ render() {
     <Link to="/sign_in" className="nav-link" href="#">Sign In</Link>
   </li>
 </ul>
-     
+    <Route path="/" exact component={Home} />
     <Route path="/home" exact component={Home} />
     <Route path="/fridge" render={() => {
       return <Fridge />
