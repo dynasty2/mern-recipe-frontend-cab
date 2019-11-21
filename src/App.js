@@ -32,7 +32,7 @@ render() {
     <Link to="/home" className="nav-link active" href="#">Home</Link>
   </li>
   <li className="nav-item">
-    <Link to="/fridge" className="nav-link" href="#">Your Fridge</Link>
+    <Link to="/fridge" className="nav-link" href="#">Fridge</Link>
   </li>
   <li className="nav-item">
     <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
