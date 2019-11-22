@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import FormFridge from "../../components/FormFridge/FormFridge";
-import FridgeFood from "../../components/FridgeFood/FridgeFood";
-import FridgeRecipeRender from "../../components/FridgeRecipeRender/FridgeRecipeRender";
+import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import FormFridge from '../../components/FormFridge/FormFridge';
+import FridgeFood from '../../components/FridgeFood/FridgeFood';
+import Footer from '../../components/Footer/Footer';
+import FridgeRecipeRender from '../../components/FridgeRecipeRender/FridgeRecipeRender';
 
 class Fridge extends Component {
   //constructor: state set as an array: wordArray = ["apple", "banana"] and bind handleFormSubmit
@@ -108,15 +109,19 @@ class Fridge extends Component {
       errorMes = <p>Error: {this.state.noMatchFood} is not an ingredient</p>;
     }
     return (
-      <div>
-        <div className="float-left">
-          <FormFridge
+        <div className="container d-flex justify-content-center">
+            <div>
+            <FormFridge
             handleFormSubmit={this.handleFormSubmit}
             handleInputChange={this.handleInputChange}
             food={this.state.food}
             errorMes={errorMes}
           />
-          <FridgeFood items={this.state.item} deleteFood={this.deleteFood} />
+            <FridgeFood items={ this.state.item } 
+                        deleteFood={this.deleteFood}/>
+            <Footer />
+            </div>
+
         </div>
         <div className="float-right" style={{ marginTop: 160 }}>
           <FridgeRecipeRender />
@@ -126,4 +131,9 @@ class Fridge extends Component {
   }
 }
 
-export default Fridge;
+    export default Fridge;
+
+    // <div style={{ marginTop: "160px", marginLeft: "20px"}}>
+    // <FridgeRecipeRender />
+    // </div>
+
