@@ -91,7 +91,7 @@ render() {
     <Router>
     <div className="container" style={{ marginTop: 20 }}>
    
-    <ul className="nav justify-content-center" style={{ marginBottom: 20 }}>
+    <ul className="nav breadcrumb justify-content-center" style={{ marginBottom: 20 }}>
   <li className="nav-item">
     <Link to="/home" className="nav-link active" href="#">Home</Link>
   </li>
