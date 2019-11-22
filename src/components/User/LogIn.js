@@ -4,6 +4,7 @@ import { Form, Button } from 'react-bootstrap';
 
 export default class LogIn extends Component {
     render() {
+        return(
         <div>
             <h1>Log In</h1>
 
@@ -22,5 +23,6 @@ export default class LogIn extends Component {
                 </Button>
             </Form>
         </div>
+        );
     }
 }

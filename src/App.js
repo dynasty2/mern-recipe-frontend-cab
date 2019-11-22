@@ -7,6 +7,8 @@ import Fridge from './components/Fridge/Fridge';
 import Recipes from './components/Recipe/Recipes';
 import User from './components/User/User';
 import SignUp from './components/User/SignUp';
+import LogIn from './components/User/LogIn';
+import LogOut from './components/User/LogOut';
 import FridgeRecipeRender from './components/FridgeRecipeRender/FridgeRecipeRender';
 import axios from 'axios';
 
@@ -94,7 +96,13 @@ render() {
     <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
   </li>
   <li className="nav-item">
-    <Link to="/account" className="nav-link" href="#">Sign In</Link>
+    <Link to="/signup" className="nav-link" href="#">Sign Up</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/signin" className="nav-link" href="#">Sign In</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/logout" className="nav-link" href="#">Log Out</Link>
   </li>
 </ul>
     <Route path="/" exact component={Home} />
@@ -104,7 +112,9 @@ render() {
     }
       } />
     <Route path="/recipes" component={Recipes} /> 
-    <Route path="/account" component={User} />
+    <Route path="/signup" component={SignUp} />
+    <Route path="/signin" component={LogIn} />
+    <Route path="/logout" component={LogOut} />
     </div> 
     </Router>
   
