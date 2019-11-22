@@ -16,7 +16,7 @@ Users enter the application via the home page.  Links on the top of the page wil
 
 In order to access your personal "Fridge," navigate to the sign in page. After submitting your email and a password, the authentication form saves your information on to your local computer. The application then uses Json web tokens to mask user information from other users.  Once signed in, you can save your fridge items!
 
-![FTT Sign In]( "Fridge To Table Sign In")
+![FTT Sign Up](https://i.imgur.com/LpTGdHh.png "Fridge To Table Sign Up")
 
 ###### Your Fridge
 
