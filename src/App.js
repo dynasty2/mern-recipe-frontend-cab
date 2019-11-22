@@ -72,6 +72,7 @@ class App extends Component {
 
   handleLogIn(e) {
     e.preventDefault()
+    console.log("click")
     axios.post('https://fridge-to-table-cab.herokuapp.com/users/login', {
       email: this.state.email,
       password: this.state.password
