@@ -22,6 +22,7 @@ class App extends Component {
 
     this.handleAddFridge = this.handleAddFridge.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
+    this.handleAddIngredient = this.handleAddIngredient.bind(this);
   }
 
   async retrieveFridge() {
@@ -41,7 +42,8 @@ class App extends Component {
         .then(res => res.json())
         .then(res => {
           this.setState({
-            fridge: res
+            fridge: res,
+            email: "default"
           });
         });
     } else {
@@ -57,12 +59,32 @@ class App extends Component {
     }
   }
 
-  async handleAddRecipe() {
+  async handleAddRecipe(recipe) {
     //handles when a recipe is added to the fridge
   }
 
-  async handelAddIngredient() {
+  async handleAddIngredient(ingredient) {
     //handles when an ingredient is added to the fridge
+    let newIngre = this.ingredients.filter(ingre => {
+      return ingre.name === ingredient;
+    });
+    let newIngreOb = newIngre[0];
+    await fetch(
+      `http://fridge-to-table-cab.herokuapp.com/fridge/${this.state.email}/ingredients`,
+      {
+        method: "PUT", // *GET, POST, PUT, DELETE, etc.
+        body: { newIngreOb },
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    )
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          fridge: res
+        });
+      });
   }
 
   async componentDidMount() {
@@ -199,7 +221,7 @@ class App extends Component {
               return (
                 <Fridge
                   ingredients={this.state.ingredients}
-                  handleAddFridge={this.handleAddFridge}
+                  handleAddIngredient={this.handleAddIngredient}
                 />
               );
             }}

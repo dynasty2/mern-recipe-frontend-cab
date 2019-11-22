@@ -42,6 +42,7 @@ class Fridge extends Component {
     if (this.checkForMatch()) {
       items.push(this.state.food);
       this.noMatch = false;
+      this.handleAddIngredient(this.state.food);
     } else {
       this.noMatch = true;
       noMatchFood = this.state.food;
