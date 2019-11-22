@@ -38,7 +38,12 @@ class App extends Component {
   }
   
   handleLogOut() {
-    
+    this.setState({
+      email: '',
+      password: '',
+      isLoggedIn: false
+    })
+    localStorage.clear()
   }
 
   handleInput(e) {
