@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Fridge from './components/Fridge/Fridge';
 import Recipes from './components/Recipe/Recipes';
 import User from './components/User/User';
+import SignUp from './components/User/SignUp';
 import FridgeRecipeRender from './components/FridgeRecipeRender/FridgeRecipeRender';
 import axios from 'axios';
 
