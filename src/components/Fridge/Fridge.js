@@ -15,11 +15,13 @@ class Fridge extends Component {
     this.state = {
       food: "",
       item: [],
-      ingrName: props.ingredients,
+      ingredients: props.ingredients,
+      ingrName: [],
       noMatchFood: ""
     };
-
+    this.ingredientNames = [];
     this.noMatch = false;
+    this.hasMadeNames = false;
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -27,7 +29,7 @@ class Fridge extends Component {
   }
 
   checkForMatch() {
-    if (this.state.ingrName.includes(this.state.food)) {
+    if (this.ingredientNames.includes(this.state.food)) {
       return true;
     }
     return false;
@@ -93,6 +95,13 @@ class Fridge extends Component {
   };
 
   render() {
+    if (this.hasMadeNames === false && this.props.ingredients.length > 0) {
+      this.ingredientNames = this.props.ingredients.map(ingredient => {
+        return ingredient.name;
+      });
+      this.hasMadeNames = true;
+    }
+
     let errorMes = <p></p>;
     if (this.noMatch === true) {
       errorMes = <p>Error: {this.state.noMatchFood} is not an ingredient</p>;

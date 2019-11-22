@@ -7,6 +7,7 @@ import Fridge from "./components/Fridge/Fridge";
 import Recipes from "./components/Recipe/Recipes";
 import User from "./components/User/User";
 import FridgeRecipeRender from "./components/FridgeRecipeRender/FridgeRecipeRender";
+import { RSA_NO_PADDING } from "constants";
 
 class App extends Component {
   constructor(props) {
@@ -14,14 +15,58 @@ class App extends Component {
 
     this.state = {
       recipes: [],
-      ingredients: []
+      ingredients: [],
+      isLoggedIn: false,
+      email: ""
     };
 
     this.handleAddFridge = this.handleAddFridge.bind(this);
     this.handleSignIn = this.handleSignIn.bind(this);
   }
 
+  async retrieveFridge() {
+    if (!this.state.isLoggedIn) {
+      let defaultFridge = {
+        user: "default",
+        recipes: [],
+        ingredients: []
+      };
+      await fetch("http://fridge-to-table-cab.herokuapp.com/fridge", {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        body: defaultFridge,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            fridge: res
+          });
+        });
+    } else {
+      await fetch(
+        `http://fridge-to-table-cab.herokuapp.com/fridge/${this.state.email}`
+      )
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            fridge: res
+          });
+        });
+    }
+  }
+
+  async handleAddRecipe() {
+    //handles when a recipe is added to the fridge
+  }
+
+  async handelAddIngredient() {
+    //handles when an ingredient is added to the fridge
+  }
+
   async componentDidMount() {
+    await this.retrieveFridge();
     let hasMore = true;
     let recipeArray = [];
     let ingredientArray = [];
