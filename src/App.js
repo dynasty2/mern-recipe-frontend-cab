@@ -26,7 +26,15 @@ class App extends Component {
     this.handleSignUp = this.handleSignUp.bind(this)
   }
   componentDidMount() {
-    
+    if (localStorage.token) {
+      this.setState({
+        isLoggedIn: true,
+      })
+    } else {
+      this.setState({
+        isLoggedIn: false
+      })
+    }
   }
   
   handleLogOut() {
