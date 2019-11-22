@@ -7,20 +7,44 @@ import Fridge from './components/Fridge/Fridge';
 import Recipes from './components/Recipe/Recipes';
 import User from './components/User/User';
 import FridgeRecipeRender from './components/FridgeRecipeRender/FridgeRecipeRender';
+import axios from 'axios';
 
 class App extends Component {
-  // constructor(props){
-  //   super(props);
+  constructor () {
+    super()
 
-  //   this.state = { 
+    this.state = {
+      email: '',
+      password: '',
+      isLoggedIn: false
+    }
 
+    this.handleLogOut = this.handleLogOut.bind(this)
+    this.handleInput = this.handleInput.bind(this)
+    this.handleLogIn = this.handleLogIn.bind(this)
+    this.handleSignUp = this.handleSignUp.bind(this)
+  }
+  componentDidMount() {
+    
+  }
+  
+  handleLogOut() {
+    
+  }
 
-  //   };
-  // }
+  handleInput(e) {
+    
+  }
 
+  handleSignUp(e) {
+      e.preventDefault()
+      
+  }
 
-
-
+  handleLogIn(e) {
+    e.preventDefault()
+    
+  }
 
 render() {
   return (
@@ -38,7 +62,7 @@ render() {
     <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
   </li>
   <li className="nav-item">
-    <Link to="/sign_in" className="nav-link" href="#">Sign In</Link>
+    <Link to="/account" className="nav-link" href="#">Sign In</Link>
   </li>
 </ul>
     <Route path="/" exact component={Home} />
@@ -48,7 +72,7 @@ render() {
     }
       } />
     <Route path="/recipes" component={Recipes} /> 
-    <Route path="/sign_in" component={User} />
+    <Route path="/account" component={User} />
     </div> 
     </Router>
   
