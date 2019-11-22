@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Fridge To Table
 
-## Available Scripts
+https://goofy-mccarthy-767ae0.netlify.com/
 
-In the project directory, you can run:
+### Description
 
-### `yarn start`
+Does the random conglomerate of food in your house ever overwhelm your inner-cook? Our Fridge to Table application takes the ingredients you input and recommends possible recipes.  Let us help you take the guesswork out of meal plannning. 
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![FTT Homepage](https://i.imgur.com/10fRvF7.png "Fridge To Table Homepage")
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### Features
 
-### `yarn test`
+###### Sign-In
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Users enter the application via the home page.  Links on the top of the page will route you to different sections of the app without having to refresh.  
 
-### `yarn build`
+In order to access your personal "Fridge," navigate to the sign in page. After submitting your email and a password, the authentication form saves your information on to your local computer. The application then uses Json web tokens to mask user information from other users.  Once signed in, you can save your fridge items!
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![FTT Sign In]( "Fridge To Table Sign In")
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+###### Your Fridge
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+On the Fridge page you can enter all sorts of ingredients (not just cold goods) into your "fridge" by entering information into the "add food" form.  When you are ready press the "Add To Fridge" button.  This will add the food you entered into your virtual fridge below. 
 
-### `yarn eject`
+![FTT Fridge Page](https://i.imgur.com/FGJc642.png "Fridge To Table Fridge Page")
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Don't worry! If you run out of an item you can remove the item with the red "remove" button to the right.  
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+###### Recipes
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+As you enter ingredients into your fridge, possible recipes will render from our recipes API, to the right of your fridge.  Scroll through these options and choose to your heart's content.  We have made a page for just recipes if you enjoy perusing.  
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Technologies
 
-## Learn More
+* React 
+* HTML
+* JavaScript
+* CSS 
+* JSX
+* Bootstrap
+* Axios
+* Netlify  
+* Json Web Tokens
+* Storybook
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Contribute?
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Thanks for checking out our Fridge To Table application.  Feel free to brake it and let us know what went wrong or if you have any recomendations. 
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

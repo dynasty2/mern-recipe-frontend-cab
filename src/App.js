@@ -7,6 +7,7 @@ import Fridge from './components/Fridge/Fridge';
 import Recipes from './components/Recipe/Recipes';
 import User from './components/User/User';
 import FridgeRecipeRender from './components/FridgeRecipeRender/FridgeRecipeRender';
+import axios from 'axios';
 
 class App extends Component {
   // constructor(props){
@@ -32,7 +33,7 @@ render() {
     <Link to="/home" className="nav-link active" href="#">Home</Link>
   </li>
   <li className="nav-item">
-    <Link to="/fridge" className="nav-link" href="#">Your Fridge</Link>
+    <Link to="/fridge" className="nav-link" href="#">Fridge</Link>
   </li>
   <li className="nav-item">
     <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
@@ -41,7 +42,7 @@ render() {
     <Link to="/sign_in" className="nav-link" href="#">Sign In</Link>
   </li>
 </ul>
-     
+    <Route path="/" exact component={Home} />
     <Route path="/home" exact component={Home} />
     <Route path="/fridge" render={() => {
       return <Fridge />
@@ -56,18 +57,3 @@ render() {
 };
   }
 export default App;
-
-{/* <ul className="nav justify-content-center">
-  <li className="nav-item">
-    <Link to="/home" className="nav-link active" href="#">Home</Link>
-  </li>
-  <li className="nav-item">
-    <Link to="/fridge" className="nav-link" href="#">Your Fridge</Link>
-  </li>
-  <li className="nav-item">
-    <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
-  </li>
-  <li className="nav-item">
-    <Link to="/sign_in" className="nav-link" href="#">Sign In</Link>
-  </li>
-</ul> */}

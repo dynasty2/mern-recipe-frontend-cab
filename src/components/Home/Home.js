@@ -22,7 +22,7 @@ render() {
               </div>
             </div>
         </header>
-        <main className="container">
+        <main className="container" style={{ marginBottom: 25 }}>
         <img src="https://i.imgur.com/sRo6yC3.jpg" className="img-fluid" alt="Food on the Table"/>
         </main>
     </body>

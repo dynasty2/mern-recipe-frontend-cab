@@ -75,16 +75,16 @@ deleteFood = (e) => {
 render() {
 
     return (
-        <div>
-            <div className="float-left">
+        <div className="container d-flex justify-content-between">
+            <div>
             <FormFridge handleFormSubmit={ this.handleFormSubmit } 
                         handleInputChange={ this.handleInputChange }
                         food={ this.state.food } />
             <FridgeFood items={ this.state.item } 
                         deleteFood={this.deleteFood}/>
             </div>
-            <div className="float-right" style={{ marginTop: 160 }}>
-            <FridgeRecipeRender />
+            <div style={{ marginTop: "160px", marginLeft: "20px"}}>
+            {/* <FridgeRecipeRender /> */}
             </div>
         </div>
             )
