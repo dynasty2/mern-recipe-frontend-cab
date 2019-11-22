@@ -71,7 +71,6 @@ class App extends Component {
 
   handleLogIn(e) {
     e.preventDefault();
-    console.log("click");
     axios
       .post("https://fridge-to-table-cab.herokuapp.com/users/login", {
         email: this.state.email,
@@ -80,11 +79,8 @@ class App extends Component {
       .then(response => {
         localStorage.token = response.data.token;
         this.setState({ isLoggedIn: true });
-        console.log(this.state.isLoggedIn);
       })
       .catch(err => console.log(err));
-
-    console.log(this.state.isLoggedIn);
   }
 
   render() {

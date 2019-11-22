@@ -2,32 +2,26 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap';
 
-export default class LogIn extends Component {
-    constructor(props) {
-        super(props);
-    }
+export default function LogIn (props) {
 
-    render() {
-        console.log(this.props);
-        return(
+    return (
             <div>
                 <h1>Log In</h1>
 
-                <Form>
+                <Form onSubmit={props.handleLogIn}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control name="email" type="email" placeholder="Enter email" onChange={this.props.logInProp}/>
+                        <Form.Control name="email" type="email" placeholder="Enter email" onChange={props.handleInput}/>
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
                         <Form.Label>Password</Form.Label>
-                        <Form.Control name="password" type="password" placeholder="Password" onChange={this.props.logInProp}/>
+                        <Form.Control name="password" type="password" placeholder="Password" onChange={props.handleInput}/>
                     </Form.Group>
-                    <Button variant="primary" type="button" onClick={this.props.handleLogIn}>
+                    <Button variant="primary" type="submit">
                         Submit
                     </Button>
                 </Form>
             </div>
         );
-    }
 }

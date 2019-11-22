@@ -4,7 +4,6 @@ import { Form, Button } from 'react-bootstrap';
 
 export default function SignUp(props) {
 
-    console.log(props);
     return(
         <div>
             <h1>Sign Up</h1>
