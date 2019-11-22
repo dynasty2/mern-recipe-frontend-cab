@@ -55,7 +55,7 @@ class App extends Component {
   handleSignUp(e) {
       e.preventDefault()
       
-    axios.post('http://localhost:8080/users/signup', {
+    axios.post('https://fridge-to-table-cab.herokuapp.com/users/signup', {
       email: this.state.email,
       password: this.state.password
     })
@@ -68,7 +68,7 @@ class App extends Component {
 
   handleLogIn(e) {
     e.preventDefault()
-    axios.post('http://localhost:8080/users/login', {
+    axios.post('https://fridge-to-table-cab.herokuapp.com/users/login', {
       email: this.state.email,
       password: this.state.password
     })
@@ -105,6 +105,7 @@ render() {
     <Link to="/logout" className="nav-link" href="#">Log Out</Link>
   </li>
 </ul>
+
     <Route path="/" exact component={Home} />
     <Route path="/home" exact component={Home} />
     <Route path="/fridge" render={() => {
