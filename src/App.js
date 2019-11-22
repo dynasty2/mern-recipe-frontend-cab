@@ -1,5 +1,5 @@
-import './App.css';
-import React, { Component } from 'react';
+import "./App.css";
+import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home/Home';
@@ -19,15 +19,20 @@ class App extends Component {
     this.state = {
       email: '',
       password: '',
-      isLoggedIn: false
+      isLoggedIn: false,
+      recipes: [],
+      ingredients: []
     }
 
     this.handleLogOut = this.handleLogOut.bind(this)
     this.handleInput = this.handleInput.bind(this)
     this.handleLogIn = this.handleLogIn.bind(this)
     this.handleSignUp = this.handleSignUp.bind(this)
+    this.handleAddFridge = this.handleAddFridge.bind(this);
+    this.handleSignIn = this.handleSignIn.bind(this);
+    this.handleAddIngredient = this.handleAddIngredient.bind(this);
   }
-  componentDidMount() {
+  async componentDidMount() {
     if (localStorage.token) {
       this.setState({
         isLoggedIn: true,
@@ -37,6 +42,79 @@ class App extends Component {
         isLoggedIn: false
       })
     }
+    await this.retrieveFridge();
+    let hasMore = true;
+    let recipeArray = [];
+    let ingredientArray = [];
+    let nextUrl = "";
+    while (hasMore === true) {
+      if (recipeArray.length === 0) {
+        await fetch("http://fridge-to-table-cab.herokuapp.com/recipe")
+          .then(res => res.json())
+          .then(res => {
+            // hasMore = res.has_more;
+            console.log(res);
+            res.data.forEach(dat => {
+              recipeArray.push(dat);
+            });
+            nextUrl = res.next_page;
+            if (res.has_more === false) {
+              hasMore = false;
+            }
+          });
+      } else {
+        await fetch(nextUrl)
+          .then(res => res.json())
+          .then(res => {
+            // hasMore = res.has_more;
+            console.log(res);
+            res.data.forEach(dat => {
+              recipeArray.push(dat);
+            });
+            nextUrl = res.next_page;
+            if (res.has_more === false) {
+              hasMore = false;
+            }
+          });
+      }
+    }
+    hasMore = true;
+    while (hasMore === true) {
+      if (ingredientArray.length === 0) {
+        await fetch("http://fridge-to-table-cab.herokuapp.com/ingredient")
+          .then(res => res.json())
+          .then(res => {
+            // hasMore = res.has_more;
+            console.log(res);
+            res.data.forEach(dat => {
+              ingredientArray.push(dat);
+            });
+            nextUrl = res.next_page;
+            if (res.has_more === false) {
+              hasMore = false;
+            }
+          });
+      } else {
+        await fetch(nextUrl)
+          .then(res => res.json())
+          .then(res => {
+            // hasMore = res.has_more;
+            console.log(res);
+            res.data.forEach(dat => {
+              ingredientArray.push(dat);
+            });
+            nextUrl = res.next_page;
+            if (res.has_more === false) {
+              hasMore = false;
+            }
+          });
+      }
+    }
+
+    this.setState({
+      recipes: recipeArray,
+      ingredients: ingredientArray
+    });
   }
   
   handleLogOut() {
@@ -85,7 +163,72 @@ class App extends Component {
 
     console.log(this.state.isLoggedIn)
   }
+  
+  async retrieveFridge() {
+    if (!this.state.isLoggedIn) {
+      let defaultFridge = {
+        user: "default",
+        recipes: [],
+        ingredients: []
+      };
+      await fetch("http://fridge-to-table-cab.herokuapp.com/fridge", {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        body: defaultFridge,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            fridge: res,
+            email: "default"
+          });
+        });
+    } else {
+      await fetch(
+        `http://fridge-to-table-cab.herokuapp.com/fridge/${this.state.email}`
+      )
+        .then(res => res.json())
+        .then(res => {
+          this.setState({
+            fridge: res
+          });
+        });
+    }
+  }
 
+  async handleAddRecipe(recipe) {
+    //handles when a recipe is added to the fridge
+  }
+
+  async handleAddIngredient(ingredient) {
+    //handles when an ingredient is added to the fridge
+    let newIngre = this.ingredients.filter(ingre => {
+      return ingre.name === ingredient;
+    });
+    let newIngreOb = newIngre[0];
+    await fetch(
+      `http://fridge-to-table-cab.herokuapp.com/fridge/${this.state.email}/ingredients`,
+      {
+        method: "PUT", // *GET, POST, PUT, DELETE, etc.
+        body: { newIngreOb },
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    )
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          fridge: res
+        });
+      });
+  }
+  handleAddFridge() {} //handles setting fridge state when a fridge is added to the database
+
+  handleSignIn() {} //handles when a user is signed in and sets the fridge state to the users fridge
+  
 render() {
   return (
     <Router>
@@ -113,13 +256,41 @@ render() {
   </li>
 </ul>
 
-    <Route path="/" exact component={Home} />
-    <Route path="/home" exact component={Home} />
-    <Route path="/fridge" render={() => {
-      return <Fridge />
-    }
-      } />
-    <Route path="/recipes" component={Recipes} /> 
+    <Route path="/">
+      <Redirect to="/home" />
+    </Route>
+    <Route
+            path="/home"
+            exact
+            render={() => {
+              return (
+                <div>
+                  <Home />
+                  <h1>Recipes</h1>
+                  {recipeObs}
+                  <h1>ingredients</h1>
+                  {ingredientObs}
+                </div>
+              );
+            }}
+          />
+          <Route
+            path="/fridge"
+            render={() => {
+              return (
+                <Fridge
+                  ingredients={this.state.ingredients}
+                  handleAddIngredient={this.handleAddIngredient}
+                />
+              );
+            }}
+          />
+          <Route
+            path="/recipes"
+            render={() => {
+              return <Recipes recipes={this.state.recipes} />;
+            }}
+          /> 
     <Route path="/signup" render={signUpProp => (
               <SignUp
                 signUpProp = {this.handleInput}               
@@ -142,3 +313,4 @@ render() {
 };
   }
 export default App;
+
