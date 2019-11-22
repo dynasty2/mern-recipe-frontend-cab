@@ -6,22 +6,79 @@ import Home from './components/Home/Home';
 import Fridge from './components/Fridge/Fridge';
 import Recipes from './components/Recipe/Recipes';
 import User from './components/User/User';
+import SignUp from './components/User/SignUp';
+import LogIn from './components/User/LogIn';
+import LogOut from './components/User/LogOut';
 import FridgeRecipeRender from './components/FridgeRecipeRender/FridgeRecipeRender';
 import axios from 'axios';
 
 class App extends Component {
-  // constructor(props){
-  //   super(props);
+  constructor () {
+    super()
 
-  //   this.state = { 
+    this.state = {
+      email: '',
+      password: '',
+      isLoggedIn: false
+    }
 
+    this.handleLogOut = this.handleLogOut.bind(this)
+    this.handleInput = this.handleInput.bind(this)
+    this.handleLogIn = this.handleLogIn.bind(this)
+    this.handleSignUp = this.handleSignUp.bind(this)
+  }
+  componentDidMount() {
+    if (localStorage.token) {
+      this.setState({
+        isLoggedIn: true,
+      })
+    } else {
+      this.setState({
+        isLoggedIn: false
+      })
+    }
+  }
+  
+  handleLogOut() {
+    this.setState({
+      email: '',
+      password: '',
+      isLoggedIn: false
+    })
+    localStorage.clear()
+  }
 
-  //   };
-  // }
+  handleInput(e) {
+    
+  }
 
+  handleSignUp(e) {
+      e.preventDefault()
+      
+    axios.post('http://localhost:8080/users/signup', {
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(response => {
+      localStorage.token = response.data.token
+      this.setState({ isLoggedIn: true })
+    })
+    .catch(err => console.log(err))
+  }
 
-
-
+  handleLogIn(e) {
+    e.preventDefault()
+    axios.post('http://localhost:8080/users/login', {
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(response => {
+      localStorage.token = response.data.token
+      this.setState({isLoggedIn: true})
+    })
+    .catch(err => console.log(err))
+    
+  }
 
 render() {
   return (
@@ -39,7 +96,13 @@ render() {
     <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
   </li>
   <li className="nav-item">
-    <Link to="/sign_in" className="nav-link" href="#">Sign In</Link>
+    <Link to="/signup" className="nav-link" href="#">Sign Up</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/signin" className="nav-link" href="#">Sign In</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/logout" className="nav-link" href="#">Log Out</Link>
   </li>
 </ul>
     <Route path="/" exact component={Home} />
@@ -49,7 +112,9 @@ render() {
     }
       } />
     <Route path="/recipes" component={Recipes} /> 
-    <Route path="/sign_in" component={User} />
+    <Route path="/signup" component={SignUp} />
+    <Route path="/signin" component={LogIn} />
+    <Route path="/logout" component={LogOut} />
     </div> 
     </Router>
   
