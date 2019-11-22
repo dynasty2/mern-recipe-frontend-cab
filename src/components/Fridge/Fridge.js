@@ -84,7 +84,7 @@ render() {
                         deleteFood={this.deleteFood}/>
             </div>
             <div style={{ marginTop: "160px", marginLeft: "20px"}}>
-            <FridgeRecipeRender />
+            {/* <FridgeRecipeRender /> */}
             </div>
         </div>
             )
