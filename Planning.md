@@ -1,5 +1,7 @@
 # Fridge To Table Planning
 
+We (Teamn C.A.B.) mostly communicated about application vision and creation in person. In addition to verbal communication, we made notes on our google doc and slacked eachother helpful links and reminders. 
+
 Access to our planning google doc:
 
 https://docs.google.com/document/d/11EFhLCxSAB7PbA0v5HvWEtEC_deROmNWHQU8dtSNiHk/edit
