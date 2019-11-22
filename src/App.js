@@ -40,6 +40,15 @@ class App extends Component {
   handleSignUp(e) {
       e.preventDefault()
       
+    axios.post('http://localhost:8080/users/signup', {
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(response => {
+      localStorage.token = response.data.token
+      this.setState({ isLoggedIn: true })
+    })
+    .catch(err => console.log(err))
   }
 
   handleLogIn(e) {
