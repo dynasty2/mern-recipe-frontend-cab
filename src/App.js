@@ -1,34 +1,124 @@
-import React from 'react';
 import './App.css';
 import React, { Component } from 'react';
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/Home/Home';
 import Fridge from './components/Fridge/Fridge';
-import Recipe from './components/Recipe/Recipe';
+import Recipes from './components/Recipe/Recipes';
 import User from './components/User/User';
+import SignUp from './components/User/SignUp';
+import LogIn from './components/User/LogIn';
+import LogOut from './components/User/LogOut';
+import FridgeRecipeRender from './components/FridgeRecipeRender/FridgeRecipeRender';
+import axios from 'axios';
 
+class App extends Component {
+  constructor () {
+    super()
 
+    this.state = {
+      email: '',
+      password: '',
+      isLoggedIn: false
+    }
 
-function App() {
+    this.handleLogOut = this.handleLogOut.bind(this)
+    this.handleInput = this.handleInput.bind(this)
+    this.handleLogIn = this.handleLogIn.bind(this)
+    this.handleSignUp = this.handleSignUp.bind(this)
+  }
+  componentDidMount() {
+    if (localStorage.token) {
+      this.setState({
+        isLoggedIn: true,
+      })
+    } else {
+      this.setState({
+        isLoggedIn: false
+      })
+    }
+  }
+  
+  handleLogOut() {
+    this.setState({
+      email: '',
+      password: '',
+      isLoggedIn: false
+    })
+    localStorage.clear()
+  }
+
+  handleInput(e) {
+    
+  }
+
+  handleSignUp(e) {
+      e.preventDefault()
+      
+    axios.post('http://localhost:8080/users/signup', {
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(response => {
+      localStorage.token = response.data.token
+      this.setState({ isLoggedIn: true })
+    })
+    .catch(err => console.log(err))
+  }
+
+  handleLogIn(e) {
+    e.preventDefault()
+    axios.post('http://localhost:8080/users/login', {
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(response => {
+      localStorage.token = response.data.token
+      this.setState({isLoggedIn: true})
+    })
+    .catch(err => console.log(err))
+    
+  }
+
+render() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
+    <Router>
+    <div className="container" style={{ marginTop: 20}}>
+   
+    <ul className="nav justify-content-center">
+  <li className="nav-item">
+    <Link to="/home" className="nav-link active" href="#">Home</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/fridge" className="nav-link" href="#">Fridge</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/recipes" className="nav-link" href="#">Recipes</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/signup" className="nav-link" href="#">Sign Up</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/signin" className="nav-link" href="#">Sign In</Link>
+  </li>
+  <li className="nav-item">
+    <Link to="/logout" className="nav-link" href="#">Log Out</Link>
+  </li>
+</ul>
+    <Route path="/" exact component={Home} />
+    <Route path="/home" exact component={Home} />
+    <Route path="/fridge" render={() => {
+      return <Fridge />
+    }
+      } />
+    <Route path="/recipes" component={Recipes} /> 
+    <Route path="/signup" component={SignUp} />
+    <Route path="/signin" component={LogIn} />
+    <Route path="/logout" component={LogOut} />
+    </div> 
+    </Router>
+  
+  )
+};
+  }
 export default App;
