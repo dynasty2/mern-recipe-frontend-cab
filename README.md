@@ -39,5 +39,10 @@ As you enter ingredients into your fridge, possible recipes will render from our
 * Axios
 * Netlify  
 * Json Web Tokens
+* Storybook
+
+### Contribute?
+
+Thanks for checking out our Fridge To Table application.  Feel free to brake it and let us know what went wrong or if you have any recomendations. 
 
 
