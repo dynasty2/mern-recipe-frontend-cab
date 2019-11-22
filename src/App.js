@@ -49,18 +49,21 @@ class App extends Component {
   }
 
   handleInput(e) {
-    
+    this.setState({
+      [e.target.name]: e.target.value
+  })
+
   }
 
   handleSignUp(e) {
       e.preventDefault()
-      
-    axios.post('http://localhost:8080/users/signup', {
+      console.log(this.state)
+    axios.post('https://fridge-to-table-cab.herokuapp.com/users/signup', {
       email: this.state.email,
       password: this.state.password
     })
-    .then(response => {
-      localStorage.token = response.data.token
+    .then(Response => {
+      localStorage.token = Response.data.token
       this.setState({ isLoggedIn: true })
     })
     .catch(err => console.log(err))
@@ -68,16 +71,19 @@ class App extends Component {
 
   handleLogIn(e) {
     e.preventDefault()
-    axios.post('http://localhost:8080/users/login', {
+    console.log("click")
+    axios.post('https://fridge-to-table-cab.herokuapp.com/users/login', {
       email: this.state.email,
       password: this.state.password
     })
     .then(response => {
       localStorage.token = response.data.token
       this.setState({isLoggedIn: true})
+      console.log(this.state.isLoggedIn)
     })
     .catch(err => console.log(err))
-    
+
+    console.log(this.state.isLoggedIn)
   }
 
 render() {
@@ -99,12 +105,13 @@ render() {
     <Link to="/signup" className="nav-link" href="#">Sign Up</Link>
   </li>
   <li className="nav-item">
-    <Link to="/signin" className="nav-link" href="#">Sign In</Link>
+    <Link to="/signin" className="nav-link" href="#">Log In</Link>
   </li>
   <li className="nav-item">
     <Link to="/logout" className="nav-link" href="#">Log Out</Link>
   </li>
 </ul>
+
     <Route path="/" exact component={Home} />
     <Route path="/home" exact component={Home} />
     <Route path="/fridge" render={() => {
@@ -112,9 +119,20 @@ render() {
     }
       } />
     <Route path="/recipes" component={Recipes} /> 
-    <Route path="/signup" component={SignUp} />
-    <Route path="/signin" component={LogIn} />
-    <Route path="/logout" component={LogOut} />
+    <Route path="/signup" render={signUpProp => (
+              <SignUp
+                signUpProp = {this.handleInput}               
+              />)}
+              />
+    <Route path="/signin" render={logInProp => (
+              <LogIn 
+              logInProp = {this.handleInput}
+              />
+            )} />
+    <Route path="/logout" render={logOutProp => (
+      <LogOut 
+      logOutProp = {this.handleLogOut}/>
+    )} />
     </div> 
     </Router>
   
