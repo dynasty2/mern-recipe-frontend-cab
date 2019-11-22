@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from '../../components/Footer/Footer';
 
 export default class LogOut extends Component {
     constructor(props) {
@@ -12,6 +13,7 @@ export default class LogOut extends Component {
                 <form>
                     <input value="Log Out" type="submit" onClick={this.props.handleLogOut} />
                 </form>
+                <Footer />
             </div>
         );
     }

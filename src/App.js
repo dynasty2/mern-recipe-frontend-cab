@@ -89,7 +89,8 @@ class App extends Component {
 render() {
   return (
     <Router>
-    <div className="container" style={{ marginTop: 20 }}>
+      <main>
+    <div className="container fixed-top" style={{ marginTop: 20 }}>
    
     <ul className="nav breadcrumb justify-content-center" style={{ marginBottom: 20 }}>
   <li className="nav-item">
@@ -134,6 +135,7 @@ render() {
       logOutProp = {this.handleLogOut}/>
     )} />
     </div> 
+    </main>
     </Router>
   
   )
