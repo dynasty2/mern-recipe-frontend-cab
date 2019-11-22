@@ -26,9 +26,9 @@ class App extends Component {
 render() {
   return (
     <Router>
-    <div className="container" style={{ marginTop: 20}}>
+    <div className="container" style={{ marginTop: 20 }}>
    
-    <ul className="nav justify-content-center">
+    <ul className="nav justify-content-center" style={{ marginBottom: 20 }}>
   <li className="nav-item">
     <Link to="/home" className="nav-link active" href="#">Home</Link>
   </li>
