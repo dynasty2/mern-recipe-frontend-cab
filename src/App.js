@@ -33,8 +33,9 @@ class App extends Component {
         ingredients: []
       };
       await fetch("http://fridge-to-table-cab.herokuapp.com/fridge", {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        method: "POST",
         body: defaultFridge,
+        mode: "cors",
         headers: {
           "Content-Type": "application/json"
         }
@@ -48,7 +49,10 @@ class App extends Component {
         });
     } else {
       await fetch(
-        `http://fridge-to-table-cab.herokuapp.com/fridge/${this.state.email}`
+        `http://fridge-to-table-cab.herokuapp.com/fridge/${this.state.email}`,
+        {
+          mode: "no-cors"
+        }
       )
         .then(res => res.json())
         .then(res => {
@@ -74,6 +78,7 @@ class App extends Component {
       {
         method: "PUT", // *GET, POST, PUT, DELETE, etc.
         body: { newIngreOb },
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json"
         }
@@ -88,6 +93,13 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    await fetch("http://fridge-to-table-cab.herokuapp.com/fridge/default", {
+      method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then();
     await this.retrieveFridge();
     let hasMore = true;
     let recipeArray = [];
@@ -95,7 +107,9 @@ class App extends Component {
     let nextUrl = "";
     while (hasMore === true) {
       if (recipeArray.length === 0) {
-        await fetch("http://fridge-to-table-cab.herokuapp.com/recipe")
+        await fetch("http://fridge-to-table-cab.herokuapp.com/recipe", {
+          mode: "no-cors"
+        })
           .then(res => res.json())
           .then(res => {
             // hasMore = res.has_more;
@@ -109,7 +123,9 @@ class App extends Component {
             }
           });
       } else {
-        await fetch(nextUrl)
+        await fetch(nextUrl, {
+          mode: "no-cors"
+        })
           .then(res => res.json())
           .then(res => {
             // hasMore = res.has_more;
@@ -127,7 +143,9 @@ class App extends Component {
     hasMore = true;
     while (hasMore === true) {
       if (ingredientArray.length === 0) {
-        await fetch("http://fridge-to-table-cab.herokuapp.com/ingredient")
+        await fetch("http://fridge-to-table-cab.herokuapp.com/ingredient", {
+          mode: "no-cors"
+        })
           .then(res => res.json())
           .then(res => {
             // hasMore = res.has_more;
@@ -141,7 +159,9 @@ class App extends Component {
             }
           });
       } else {
-        await fetch(nextUrl)
+        await fetch(nextUrl, {
+          mode: "no-cors"
+        })
           .then(res => res.json())
           .then(res => {
             // hasMore = res.has_more;

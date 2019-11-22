@@ -1,15 +1,22 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+// import RecipeItem from "../RecipeItem/RecipeItem";
 // import axios from 'axios';
 
-
-export default class Recipes extends Component { 
-
-render() {
-        return (
-            <header className="container-fluid p-3 mb-2 bg-light text-dark">
-                <h1>Choose your yummy recipe!</h1>
-            </header>
-        )
-    }
+export default class Recipes extends Component {
+  render() {
+    console.log(this.props.recipes);
+    let recipes = this.props.recipes.map(recipe => {
+      let ingre = recipe.ingredients.map(ingred => {
+        return <li>{ingred}</li>;
+      });
+      return (
+        <div>
+          <h3>{recipe.name}</h3>
+          <ul>{ingre}</ul>
+        </div>
+      );
+    });
+    return <div>{recipes}</div>;
+  }
 }
