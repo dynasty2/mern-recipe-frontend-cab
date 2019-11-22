@@ -66,6 +66,15 @@ class App extends Component {
 
   handleLogIn(e) {
     e.preventDefault()
+    axios.post('http://localhost:8080/users/login', {
+      email: this.state.email,
+      password: this.state.password
+    })
+    .then(response => {
+      localStorage.token = response.data.token
+      this.setState({isLoggedIn: true})
+    })
+    .catch(err => console.log(err))
     
   }
 
