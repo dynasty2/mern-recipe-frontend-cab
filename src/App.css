@@ -28,3 +28,12 @@
 .nav {
   z-index: 1;
 }
+
+.nav-link {
+  color: black;
+}
+
+
+ul {
+  opacity: .5;
+}

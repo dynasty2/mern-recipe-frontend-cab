@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from '../../components/Footer/Footer';
 import { Form, Button } from 'react-bootstrap';
 
 export default class LogIn extends Component {
@@ -22,6 +23,7 @@ export default class LogIn extends Component {
                         Submit
                     </Button>
                 </Form>
+                <Footer />
             </div>
         );
     }

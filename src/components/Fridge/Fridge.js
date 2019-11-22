@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import FormFridge from '../../components/FormFridge/FormFridge';
 import FridgeFood from '../../components/FridgeFood/FridgeFood';
+import Footer from '../../components/Footer/Footer';
 import FridgeRecipeRender from '../../components/FridgeRecipeRender/FridgeRecipeRender';
 
 class Fridge extends Component { 
@@ -75,16 +76,14 @@ deleteFood = (e) => {
 render() {
 
     return (
-        <div className="container d-flex justify-content-between">
+        <div className="container d-flex justify-content-center">
             <div>
             <FormFridge handleFormSubmit={ this.handleFormSubmit } 
                         handleInputChange={ this.handleInputChange }
                         food={ this.state.food } />
             <FridgeFood items={ this.state.item } 
                         deleteFood={this.deleteFood}/>
-            </div>
-            <div style={{ marginTop: "160px", marginLeft: "20px"}}>
-            {/* <FridgeRecipeRender /> */}
+            <Footer />
             </div>
         </div>
             )
@@ -92,3 +91,7 @@ render() {
     }
 
     export default Fridge;
+
+    // <div style={{ marginTop: "160px", marginLeft: "20px"}}>
+    // <FridgeRecipeRender />
+    // </div>
